@@ -9,6 +9,7 @@
 #
 # globals
 users_list=()
+dest_dir="/backup/rpy_1_backup"
 
 #
 # add users to list
@@ -28,7 +29,7 @@ done
 #
 # sync
 for username in ${users_list[@]}; do
-        dest_dir="/backup/rpy_1_backup"
+        mkdir -p "${dest_dir}"
         [ $? -ne 0 ] && { echo "error creating directory ${dest_dir}, skipping..."; continue; }
 
         if [ "${username}" = "root" ]; then
